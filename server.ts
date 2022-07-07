@@ -21,11 +21,14 @@ const handleRequest = async (request: Request) => {
   const route = router.resolve(method, path);
 
   const data = await request.text();
-  const params = new URLSearchParams(data);
+
+  const dataParams = Object.fromEntries(new URLSearchParams(data));
 
   if (route) {
     try {
-      return route.controller({request, params})
+      const params = { ...dataParams, ...route.params };
+
+      return route.controller({ request, params });
     } catch (error: unknown) {
       if (error instanceof Error) {
         return new Response(error.message, { status: 400 });

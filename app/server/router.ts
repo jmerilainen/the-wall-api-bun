@@ -32,9 +32,20 @@ const createRouter = () => {
     register("delete", path, controller);
 
   const resolve = (method: string, url: string) => {
-    return routes.find((route) => {
+    const route = routes.find((route) => {
       return route.method === method.toLowerCase() && url.match(route.matcher);
     });
+    if (! route) {
+      return undefined;
+    }
+
+    const match = url.match(route.matcher);
+    const params = match?.groups || {};
+
+    return {
+      ...route,
+      params,
+    }
   };
 
   return {
