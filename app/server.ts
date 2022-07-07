@@ -20,11 +20,10 @@ const handleRequest = async (request: Request) => {
 
   const route = router.resolve(method, path);
 
-  const data = await request.text();
-
-  const dataParams = Object.fromEntries(new URLSearchParams(data));
-
   if (route) {
+    const data = await request.text();
+    const dataParams = Object.fromEntries(new URLSearchParams(data));
+
     try {
       const params = { ...dataParams, ...route.params };
 
