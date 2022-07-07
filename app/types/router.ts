@@ -2,7 +2,7 @@ import type { Controller } from "./controller";
 
 export interface RouteProps {
   request: Request;
-  params: URLSearchParams;
+  params: {[key: string]: string};
 }
 
 export interface Route {

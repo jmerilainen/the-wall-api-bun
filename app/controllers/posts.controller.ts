@@ -16,7 +16,7 @@ const index: Controller = () => {
 };
 
 const create: Controller = ({ params }) => {
-  const content = params.get("content");
+  const content = params.content;
 
   if (!content) {
     throw new Error("Param 'content' is missing");
@@ -34,7 +34,7 @@ const create: Controller = ({ params }) => {
 };
 
 const show: Controller = ({ params }) => {
-  const id = Number(params.get("id"));
+  const id = Number(params.id);
 
   const item = post.get(id);
 
@@ -51,8 +51,8 @@ const show: Controller = ({ params }) => {
 };
 
 const update: Controller = ({ params }) => {
-  const id = Number(params.get("id"));
-  const content = params.get("content");
+  const id = Number(params.id);
+  const content = params.content;
 
   if (!content) {
     throw new Error("Param 'content' is missing");
@@ -64,7 +64,7 @@ const update: Controller = ({ params }) => {
 };
 
 const destroy: Controller = ({ params }) => {
-  const id = Number(params.get("id"));
+  const id = Number(params.id);
 
   const res = post.destroy(id);
 

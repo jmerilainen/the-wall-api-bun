@@ -2,8 +2,6 @@ import { serve } from "bun"
 import controllers from "~/controllers";
 import { createRouter } from "~/server/router"
 
-const port = Number(process.env.PORT) || 3000
-
 const router = createRouter();
 
 router.get("/", controllers.home.index);
@@ -39,7 +37,6 @@ const handleRequest = async (request: Request) => {
 }
 
 const server = serve({
-  port: port,
   async fetch(request: Request) {
     return await handleRequest(request);
   },
