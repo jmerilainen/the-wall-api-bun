@@ -1,0 +1,6 @@
+{
+  "name": "the-wall-api-bun",
+  "scripts": {
+    "start": "bun run ./server.ts"
+  }
+}
